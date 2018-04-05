@@ -22,7 +22,10 @@ class App extends React.Component {
 					"name":"Srishti Singh",
 					"age":19
 				}
-			]
+			],
+			shitAlert : () => {
+					alert("Hello");
+				}
 		}
 	}
    render() {
@@ -31,6 +34,7 @@ class App extends React.Component {
    	}
       return (
          <div>
+         	<button onClick={this.state.shitAlert}>Alert</button>
            <Heading/>
            {this.state.data.map((person,i) => <Mytable key = {i} data = {person} />)}
            <Footing/>

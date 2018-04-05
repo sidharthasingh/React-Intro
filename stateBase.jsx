@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 class Statebase extends React.Component{
@@ -11,11 +11,23 @@ class Statebase extends React.Component{
 		};
 		this.setStateHandler = this.setStateHandler.bind(this);
 		this.forceUpdatehandler = this.forceUpdatehandler.bind(this);
+		this.findDomNodeHandler = this.findDomNodeHandler.bind(this);
 	}
 
 	forceUpdatehandler(){
 		this.state.name = "Sid(Force Update)";
 		this.forceUpdate();
+	}
+
+	findDomNodeHandler(para){
+		console.log(para);
+		var div = document.getElementById("xyz");
+		var col = ReactDOM.findDOMNode(div).style.color;
+		if(col == "rgb(255, 255, 255)")
+			ReactDOM.findDOMNode(div).style.color = "#000";
+		else 
+			ReactDOM.findDOMNode(div).style.color = "#FFF";
+		console.log(col);
 	}
 
 	setStateHandler(){
@@ -28,7 +40,8 @@ class Statebase extends React.Component{
 	render(){
 		return (
 			<div>
-				<button onClick={this.forceUpdatehandler}>Force Update</button><pre> </pre>
+				<button onClick={this.findDomNodeHandler}>Change Dom</button>
+				<button id='xyz' onClick={this.forceUpdatehandler}>Force Update</button><pre> </pre>
 				<button onFocus={this.setStateHandler} onBlur={this.setStateHandler}>SET STATE</button>
 				<h4>{this.state.data}</h4>
 				<h4>{this.state.name}</h4>
