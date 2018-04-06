@@ -65,12 +65,10 @@ class Footing extends React.Component{
 	}
 }
 
-
 // Prop validation
 Footing.propTypes = {
 	text : PropTypes.string
 }
-
 
 // Adding default props
 Footing.defaultProps = {
